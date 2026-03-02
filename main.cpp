@@ -4,31 +4,32 @@ constexpr int N_ELEMENTS = 100;
 
 int main()
 {
-    // HIBA: 'NELEMENTS' nem létező azonosító, helyesen 'N_ELEMENTS' (hiányzó alulvonás)
-    int *b = new int[NELEMENTS];
-    // HIBA: szimpla idézőjelek ('...') karakter literált jelölnek, string literálhoz dupla idézőjelek ("...") kellenek; hiányzó << std::endl; és záró pontosvessző
-    std::cout << '1-100 ertekek duplazasa'
-    // HIBA: a for ciklusból hiányzik a feltétel (pl. i < N_ELEMENTS) és a léptetés (i++), végtelen/érvénytelen ciklus
-    for (int i = 0;)
+    // JAVÍTVA: NELEMENTS -> N_ELEMENTS
+    int *b = new int[N_ELEMENTS];
+    // JAVÍTVA: szimpla idézőjelek -> dupla idézőjelek; hozzáadva << std::endl;
+    std::cout << "1-100 ertekek duplazasa" << std::endl;
+    // JAVÍTVA: hozzáadva feltétel (i < N_ELEMENTS) és léptetés (i++)
+    for (int i = 0; i < N_ELEMENTS; i++)
     {
         b[i] = i * 2;
     }
-    // HIBA: a feltétel 'i' (azaz 0) mindig hamis, a ciklus soha nem fut le; helyesen: i < N_ELEMENTS
-    for (int i = 0; i; i++)
+    // JAVÍTVA: feltétel 'i' -> 'i < N_ELEMENTS'
+    for (int i = 0; i < N_ELEMENTS; i++)
     {
-        // HIBA: hiányzik a kiírandó érték (pl. << b[i]) és a záró << std::endl; valamint a pontosvessző
-        std::cout << "Ertek:"
+        // JAVÍTVA: hozzáadva << b[i] << std::endl; és záró pontosvessző
+        std::cout << "Ertek: " << b[i] << std::endl;
     }    
     std::cout << "Atlag szamitasa: " << std::endl;
-    // HIBA: 'atlag' inicializálatlan, indetermináns (szemét) értéket tartalmaz; helyesen: int atlag = 0;
-    int atlag;
-    // HIBA: a for fejlécében feltétel és léptetés között vessző (,) szerepel pontosvessző (;) helyett
-    for (int i = 0; i < N_ELEMENTS, i++)
+    // JAVÍTVA: inicializálva 0-ra
+    int atlag = 0;
+    // JAVÍTVA: vessző (,) -> pontosvessző (;)
+    for (int i = 0; i < N_ELEMENTS; i++)
     {
-        // HIBA: hiányzó pontosvessző az utasítás végéről
-        atlag += b[i]
+        // JAVÍTVA: hozzáadva pontosvessző
+        atlag += b[i];
     }
     atlag /= N_ELEMENTS;
     std::cout << "Atlag: " << atlag << std::endl;
+    delete[] b;
     return 0;
 }
