@@ -18,7 +18,7 @@ int main()
     {
         // JAVÍTVA: hozzáadva << b[i] << std::endl; és záró pontosvessző
         std::cout << "Ertek: " << b[i] << std::endl;
-    }    
+    }
     std::cout << "Atlag szamitasa: " << std::endl;
     // JAVÍTVA: inicializálva 0-ra
     int atlag = 0;
@@ -31,5 +31,8 @@ int main()
     atlag /= N_ELEMENTS;
     std::cout << "Atlag: " << atlag << std::endl;
     delete[] b;
+
+    std::cout << "Cash or card" << std::endl;
+
     return 0;
 }
